@@ -526,6 +526,12 @@ String NetworkEvents::handleSpecialMessages (StringTS msg)
         status += CoreServices::RecordNode::getExperimentNumber();
         return status;
     }
+	else if (String("LoadSignalChain").compareIgnoreCase(cmd) == 0)
+	{
+		const String filePath = s.substring(cmd.length());
+		CoreServices::loadSignalChain(filePath);
+		return String("SignalChainLoaded");		
+	}
 
     return String ("NotHandled");
 }

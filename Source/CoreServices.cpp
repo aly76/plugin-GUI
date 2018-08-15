@@ -32,7 +32,6 @@
 #include "Processors/MessageCenter/MessageCenterEditor.h"
 #include "Processors/Events/Events.h"
 
-
 using namespace AccessClass;
 
 
@@ -126,6 +125,16 @@ String getSelectedRecordEngineId()
 bool setSelectedRecordEngineId(String id)
 {
 	return getControlPanel()->setSelectedRecordEngineId(id);
+}
+
+void loadSignalChain(const String& filePath)
+{
+	/** Load a saved configuration from an XML file. */
+	//File(const String& absolutePath);
+	//const String loadState(File filename);
+	
+	File configFile(filePath); 
+	getEditorViewport()->loadState(configFile);
 }
 
 namespace RecordNode
