@@ -127,14 +127,12 @@ bool setSelectedRecordEngineId(String id)
 	return getControlPanel()->setSelectedRecordEngineId(id);
 }
 
-void loadSignalChain(const String& filePath)
+const String loadSignalChain(const String& filePath)
 {
-	/** Load a saved configuration from an XML file. */
-	//File(const String& absolutePath);
-	//const String loadState(File filename);
+	/** Load signal chain from a XML configuration file. */	
 	
 	File configFile(filePath); 
-	getEditorViewport()->loadState(configFile);
+	return getEditorViewport()->loadState(configFile);
 }
 
 namespace RecordNode

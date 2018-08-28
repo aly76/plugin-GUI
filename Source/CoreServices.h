@@ -95,7 +95,7 @@ change the current engine or false otherwise. */
 PLUGIN_API bool setSelectedRecordEngineId(String id);
 
 /** Passes a file location to EditorViewport::loadstate() */
-PLUGIN_API void loadSignalChain(const String& filePath); 
+PLUGIN_API const String loadSignalChain(const String& filePath); 
 
 namespace RecordNode
 {

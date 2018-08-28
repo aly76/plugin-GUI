@@ -528,9 +528,18 @@ String NetworkEvents::handleSpecialMessages (StringTS msg)
     }
 	else if (String("LoadSignalChain").compareIgnoreCase(cmd) == 0)
 	{
-		const String filePath = s.substring(cmd.length());
-		CoreServices::loadSignalChain(filePath);
-		return String("SignalChainLoaded");		
+		const String filePath = s.substring(cmd.length()+1);
+		const String error = CoreServices::loadSignalChain(filePath);
+
+		if (error.startsWithIgnoreCase("Opened"))
+		{ 
+			return String("SignalChainLoaded");
+		}
+		else if (error.compareIgnoreCase("Not a valid file.") == 0)
+		{
+			return String("InvalidFile");
+		}
+			
 	}
 
     return String ("NotHandled");
